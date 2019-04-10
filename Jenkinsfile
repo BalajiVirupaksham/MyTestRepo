@@ -2,17 +2,16 @@ pipeline {
   
   def label = "my_test"
 
-  agent (label) {
+  agent(label) {
   
-  stages{
+  stages {
   
     stage('Say Hello'){
     
-      steps{
-       echo "Hello World!!"
-      }
-    
+             steps{
+                echo "Hello World!!"
+             }
     }
   }
-  }
+ }
 }
