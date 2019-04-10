@@ -1,6 +1,6 @@
 pipeline {
 
-  agen { lable 'linux'}
+  agent { lable 'linux'}
   
   stages{
   
