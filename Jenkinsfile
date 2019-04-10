@@ -2,7 +2,7 @@ pipeline {
   
   def label = "my_test"
 
-  agent(label) {
+  agent{label} 
   
   stages {
   
@@ -14,4 +14,4 @@ pipeline {
     }
   }
  }
-}
+
