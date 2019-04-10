@@ -1,6 +1,8 @@
 pipeline {
+  
+  def label = "my_test"
 
-  agent { label 'linux'}
+  agent (label) {
   
   stages{
   
@@ -12,5 +14,5 @@ pipeline {
     
     }
   }
-
+  }
 }
