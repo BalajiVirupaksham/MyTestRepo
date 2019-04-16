@@ -1,12 +1,32 @@
 
 pipeline {
-    agent { docker { image 'node:6.3' } }
-    stages {
-        stage('build') {
-            steps {
-                sh 'npm --version'
-                sh 'echo "Hello World!" '
+   
+   node {
+   //stage('check-out'){
+       
+      // git 'https://github.com/BalajiVirupaksham/MyTestRepo.git'
+  // }
+   
+   stage('Checkout the repository') {
+                //sh "echo ${BUILD_ENV}"
+                gitData = checkout(scm)
+                shortSha = gitData.GIT_COMMIT.substring(0, 6).trim()
+                echo "shortSha: '${shortSha}'"
             }
-        }
-    }
+            
+   stage('Say-Hello'){
+       
+       sh  "bash ./say_hello.sh"
+   }
+   
+   stage('UserCredentials'){
+       
+       withCredentials([usernamePassword(credentialsId: 'My_PUID', passwordVariable: 'MY_PASSWORD', usernameVariable: 'MY_USER_NAME')]) {
+       echo "My passowrd: '${MY_PASSWORD}'"
+}
+       
+       
+   }
+}
+
 }
